@@ -1,0 +1,402 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&display=swap");
+
+:root {
+    --bg-color: #f7f7f8;
+    --panel-bg: #ffffff;
+    --border-light: #e5e5e8;
+    --border-dark: #18181b;
+    --text-primary: #111113;
+    --text-secondary: #52525b;
+    --text-muted: #a1a1aa;
+    --accent-color: #18181b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:
+        "Pretendard",
+        -apple-system,
+        BlinkMacSystemFont,
+        system-ui,
+        Roboto,
+        sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1040px;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* ==========================================================================
+   Left Control Panel (좌측 조작부 - 미니멀 사이드바)
+   ========================================================================== */
+.control-panel {
+    width: 260px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 48px;
+    flex-shrink: 0;
+}
+
+.brand {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 0.78rem;
+    font-weight: 500;
+    border: 1px solid var(--border-dark);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-main {
+    background: var(--border-dark);
+    color: #ffffff;
+}
+.btn-main:hover {
+    background: #27272a;
+}
+.btn-sub:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.sub-title {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.options-inline {
+    display: flex;
+    gap: 6px;
+}
+
+.toggle-chip {
+    padding: 4px 10px;
+    font-size: 0.73rem;
+    border: 1px solid var(--border-light);
+    background: #fff;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s ease;
+}
+
+.toggle-chip.active {
+    border-color: var(--border-dark);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+.btn-link:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.field-tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    line-height: 1.6;
+}
+
+.field-tag {
+    font-size: 0.75rem;
+    color: #d4d4d8;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease;
+}
+
+.field-tag.active {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Right Profile Sheet (우측 시트 - 카드X, 라인/타이포 기반 종이 문서)
+   ========================================================================== */
+.paper-container {
+    flex: 1;
+}
+
+.profile-sheet {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-light);
+    padding: 56px 64px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Document Header */
+.sheet-header {
+    border-bottom: 1.5px solid var(--border-dark);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+}
+
+.meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.color-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #000;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.character-name {
+    font-family: "Noto Serif KR", serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+/* 상단 기본 인적사항 바 */
+.basic-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 0.82rem;
+}
+
+.meta-unit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meta-unit.is-hidden,
+.meta-item.is-hidden,
+.detail-item.is-hidden,
+.text-block.is-hidden {
+    display: none !important;
+}
+
+.lbl-inline {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.lbl-inline::after {
+    content: " :";
+}
+
+/* Main Profile Content */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* 외양 구분행 */
+.appearance-row {
+    display: flex;
+    gap: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* 라벨 스타일: 한글 미니멀 인덴트 라벨 (― 라벨명) */
+.lbl {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: -0.2px;
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 400;
+}
+
+.lbl::before {
+    content: "― ";
+    color: #d4d4d8;
+}
+
+.val {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.5;
+}
+
+.divider {
+    color: #d4d4d8;
+    margin: 0 2px;
+    font-size: 0.75rem;
+}
+
+.dot-group {
+    display: inline-flex;
+    gap: 4px;
+}
+
+/* 성격 강조 섹션 */
+.main-personality {
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.highlight-val {
+    font-family: "Noto Serif KR", serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* 2열 모던 깔끔 스펙 Grid */
+.details-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 기타 메모 */
+.etc-block {
+    margin-top: 4px;
+}
+
+.multiline {
+    line-height: 1.65;
+    white-space: pre-line;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Toast Notice */
+.toast {
+    position: fixed;
+    bottom: 32px;
+    background: var(--text-primary);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 0.78rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    letter-spacing: -0.2px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 반응형 처리 */
+@media (max-width: 880px) {
+    .app-layout {
+        flex-direction: column;
+        gap: 32px;
+    }
+    .control-panel {
+        width: 100%;
+        position: static;
+    }
+    .profile-sheet {
+        padding: 40px 28px;
+    }
+}
+
+@media (max-width: 580px) {
+    .details-grid-2col {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .appearance-row {
+        flex-direction: column;
+        gap: 18px;
+    }
+}
+/* 개별 sub-item 숨김 처리 */
+.sub-item.is-hidden,
+.divider.is-hidden {
+    display: none !important;
+}
+
+/* 색상 코드 폰트 크기 조정 (레이아웃 이탈 방지) */
+#val-hairColorText,
+#val-eyeColor,
+#mainColorCode {
+    font-size: 0.85em; /* 기존보다 약 15% 줄여서 깔끔하게 정렬 */
+    font-family: monospace; /* HEX 코드가 정돈되도록 가로폭 고정 폰트 추천 */
+    letter-spacing: -0.5px;
+}

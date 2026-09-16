@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>52캐메이커</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="app-layout">
+            <!-- Left Controller -->
+            <aside class="control-panel">
+                <div class="panel-section">
+                    <div class="brand">PROFILES · SETTINGS</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-main" id="generateBtn">생성하기</button>
+                        <button class="btn btn-sub" id="copyBtn">복사하기</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <span class="sub-title">옵션 선택</span>
+                    <div class="options-inline" style="margin-bottom: 10px">
+                        <button class="toggle-chip active" id="toggleMiddleName">미들네임</button>
+                        <button class="toggle-chip active" id="toggleOddHair">특수 헤어</button>
+                        <button class="toggle-chip active" id="toggleOddEye">특수 눈동자</button>
+                    </div>
+
+                    <div class="filter-options" style="display: flex; flex-direction: column; gap: 8px">
+                        <label
+                            class="filter-group"
+                            style="
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                font-size: 0.73rem;
+                                color: var(--text-secondary);
+                            ">
+                            <span>이름 유형</span>
+                            <select
+                                id="nameTypeSelect"
+                                style="
+                                    font-size: 0.73rem;
+                                    padding: 2px 4px;
+                                    border: 1px solid var(--border-light);
+                                    border-radius: 2px;
+                                ">
+                                <option value="all">전체 랜덤</option>
+                                <option value="korean">한국식</option>
+                                <option value="japanese">일본식</option>
+                                <option value="western">영어권</option>
+                            </select>
+                        </label>
+                        <label
+                            class="filter-group"
+                            style="
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                font-size: 0.73rem;
+                                color: var(--text-secondary);
+                            ">
+                            <span>나이 범위</span>
+                            <div style="display: flex; align-items: center; gap: 2px">
+                                <input
+                                    type="number"
+                                    id="ageMin"
+                                    value="15"
+                                    style="
+                                        width: 40px;
+                                        font-size: 0.73rem;
+                                        padding: 2px;
+                                        border: 1px solid var(--border-light);
+                                        text-align: center;
+                                    " />
+                                ~
+                                <input
+                                    type="number"
+                                    id="ageMax"
+                                    value="40"
+                                    style="
+                                        width: 40px;
+                                        font-size: 0.73rem;
+                                        padding: 2px;
+                                        border: 1px solid var(--border-light);
+                                        text-align: center;
+                                    " />
+                                세
+                            </div>
+                        </label>
+                        <label
+                            class="filter-group"
+                            style="
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                font-size: 0.73rem;
+                                color: var(--text-secondary);
+                            ">
+                            <span>키 범위</span>
+                            <div style="display: flex; align-items: center; gap: 2px">
+                                <input
+                                    type="number"
+                                    id="heightMin"
+                                    value="150"
+                                    style="
+                                        width: 40px;
+                                        font-size: 0.73rem;
+                                        padding: 2px;
+                                        border: 1px solid var(--border-light);
+                                        text-align: center;
+                                    " />
+                                ~
+                                <input
+                                    type="number"
+                                    id="heightMax"
+                                    value="195"
+                                    style="
+                                        width: 40px;
+                                        font-size: 0.73rem;
+                                        padding: 2px;
+                                        border: 1px solid var(--border-light);
+                                        text-align: center;
+                                    " />
+                                cm
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="panel-section flex-grow">
+                    <div class="section-header">
+                        <span class="sub-title">표시 항목 설정</span>
+                        <button class="btn-link" id="toggleAllBtn">전체 선택/해제</button>
+                    </div>
+
+                    <div class="field-tag-cloud">
+                        <span class="field-tag active" data-target="field-birthday">생일</span>
+                        <span class="field-tag active" data-target="field-gender">성별</span>
+                        <span class="field-tag active" data-target="field-age">나이</span>
+                        <span class="field-tag active" data-target="field-nationality">국적</span>
+                        <span class="field-tag active" data-target="field-height">신장</span>
+                        <span class="field-tag active" data-target="field-bodyType">체형</span>
+                        <span class="field-tag active" data-target="field-job">직업</span>
+                        <span class="field-tag active" data-target="field-hairColor">헤어 색상</span>
+                        <span class="field-tag active" data-target="field-hairStyle">헤어 스타일</span>
+                        <span class="field-tag active" data-target="field-eyeColor">눈동자 색상</span>
+                        <span class="field-tag active" data-target="field-eyeShape">눈매</span>
+                        <span class="field-tag active" data-target="field-personality">성격 키워드</span>
+                        <span class="field-tag active" data-target="field-speechSet">어조 및 말투</span>
+                        <span class="field-tag active" data-target="field-alignment">가치관</span>
+                        <span class="field-tag active" data-target="field-values">신념</span>
+                        <span class="field-tag active" data-target="field-firstImpression">첫인상</span>
+                        <span class="field-tag active" data-target="field-wealth">재력</span>
+                        <span class="field-tag active" data-target="field-reputation">평판</span>
+                        <span class="field-tag active" data-target="field-hobby">취미</span>
+                        <span class="field-tag active" data-target="field-specialty">특기</span>
+                        <span class="field-tag active" data-target="field-likes">호</span>
+                        <span class="field-tag active" data-target="field-dislikes">불호</span>
+                        <span class="field-tag active" data-target="field-scent">체향</span>
+                        <span class="field-tag active" data-target="field-weakness">약점</span>
+                        <span class="field-tag active" data-target="field-habit">버릇</span>
+                        <span class="field-tag active" data-target="field-fear">트라우마</span>
+                        <span class="field-tag active" data-target="field-symbolSet">상징 요소</span>
+                        <span class="field-tag active" data-target="field-belongings">소지품</span>
+                        <span class="field-tag active" data-target="field-secret">비밀</span>
+                        <span class="field-tag active" data-target="field-family">가족</span>
+                        <span class="field-tag active" data-target="field-etc">특이사항</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Profile Document Sheet -->
+            <main class="paper-container">
+                <div class="profile-sheet">
+                    <!-- HEADER -->
+                    <header class="sheet-header">
+                        <div class="meta-top">
+                            <span class="color-indicator">
+                                <span class="dot" id="mainColorDot"></span>
+                                <span id="mainColorCode">#000000</span>
+                            </span>
+                        </div>
+
+                        <h1 class="character-name" id="val-name">-</h1>
+
+                        <!-- 상단 기본 인적사항 바 -->
+                        <div class="basic-meta-bar">
+                            <span class="meta-unit" id="field-birthday"
+                                ><span id="val-birthday" class="val">-</span></span
+                            >
+                            <span class="meta-unit" id="field-age"><span id="val-age" class="val">-</span></span>
+                            <span class="meta-unit" id="field-gender"><span id="val-gender" class="val">-</span></span>
+
+                            <span class="meta-unit" id="field-nationality"
+                                ><span id="val-nationality" class="val">-</span></span
+                            >
+                            <span class="meta-unit" id="field-height"><span id="val-height" class="val">-</span></span>
+                            <span class="meta-unit" id="field-bodyType"
+                                ><span id="val-bodyType" class="val">-</span></span
+                            >
+                            <span class="meta-unit" id="field-job"><span id="val-job" class="val">-</span></span>
+                        </div>
+                    </header>
+
+                    <!-- Dynamic Profile Content List -->
+                    <div class="profile-content">
+                        <!-- 외양 정보 (헤어 / 눈) -->
+                        <div class="appearance-row" id="appearanceRow">
+                            <div class="meta-item" id="hairBlock">
+                                <span class="lbl">헤어</span>
+                                <span class="val flex-val">
+                                    <span class="sub-item" id="field-hairColor">
+                                        <span class="dot" id="hairColorDot"></span>
+                                        <span id="val-hairColor">-</span>
+                                    </span>
+                                    <span class="divider" id="hairDivider">/</span>
+                                    <span class="sub-item" id="field-hairStyle">
+                                        <span id="val-hairStyle">-</span>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <div class="meta-item" id="eyeBlock">
+                                <span class="lbl">눈동자</span>
+                                <span class="val flex-val">
+                                    <span class="sub-item" id="field-eyeColor">
+                                        <span id="eyeColorDots" class="dot-group"></span>
+                                        <span id="val-eyeColor">-</span>
+                                    </span>
+                                    <span class="divider" id="eyeDivider">/</span>
+                                    <span class="sub-item" id="field-eyeShape">
+                                        <span id="val-eyeShape">-</span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- 성격 (포인트 텍스트 섹션) -->
+                        <div class="text-block main-personality" id="field-personality">
+                            <span class="lbl">성격 키워드</span>
+                            <span class="val highlight-val" id="val-personality">-</span>
+                        </div>
+
+                        <!-- 상세 프로필 세로 리스트 / 그리드 -->
+                        <div class="details-grid-2col">
+                            <div class="detail-item" id="field-speechSet">
+                                <span class="lbl">어조 및 말투</span>
+                                <span class="val" id="val-speechSet">-</span>
+                            </div>
+                            <div class="detail-item" id="field-alignment">
+                                <span class="lbl">가치관</span>
+                                <span class="val" id="val-alignment">-</span>
+                            </div>
+                            <div class="detail-item" id="field-values">
+                                <span class="lbl">중시하는 신념</span>
+                                <span class="val" id="val-values">-</span>
+                            </div>
+
+                            <div class="detail-item" id="field-firstImpression">
+                                <span class="lbl">첫인상</span>
+                                <span class="val" id="val-firstImpression">-</span>
+                            </div>
+                            <div class="detail-item" id="field-wealth">
+                                <span class="lbl">자산 / 재력</span>
+                                <span class="val" id="val-wealth">-</span>
+                            </div>
+                            <div class="detail-item" id="field-reputation">
+                                <span class="lbl">세간의 평판</span>
+                                <span class="val" id="val-reputation">-</span>
+                            </div>
+
+                            <div class="detail-item" id="field-hobby">
+                                <span class="lbl">취미</span>
+                                <span class="val" id="val-hobby">-</span>
+                            </div>
+                            <div class="detail-item" id="field-specialty">
+                                <span class="lbl">특기</span>
+                                <span class="val" id="val-specialty">-</span>
+                            </div>
+                            <div class="detail-item" id="field-scent">
+                                <span class="lbl">체향</span>
+                                <span class="val" id="val-scent">-</span>
+                            </div>
+
+                            <div class="detail-item" id="field-likes">
+                                <span class="lbl">선호하는 것</span>
+                                <span class="val" id="val-likes">-</span>
+                            </div>
+                            <div class="detail-item" id="field-dislikes">
+                                <span class="lbl">기피하는 것</span>
+                                <span class="val" id="val-dislikes">-</span>
+                            </div>
+                            <div class="detail-item" id="field-weakness">
+                                <span class="lbl">약점</span>
+                                <span class="val" id="val-weakness">-</span>
+                            </div>
+
+                            <div class="detail-item" id="field-habit">
+                                <span class="lbl">무의식적 습관</span>
+                                <span class="val" id="val-habit">-</span>
+                            </div>
+                            <div class="detail-item" id="field-fear">
+                                <span class="lbl">공포 / 트라우마</span>
+                                <span class="val" id="val-fear">-</span>
+                            </div>
+                            <div class="detail-item" id="field-symbolSet">
+                                <span class="lbl">상징 (동물 / 식물)</span>
+                                <span class="val" id="val-symbolSet">-</span>
+                            </div>
+
+                            <div class="detail-item" id="field-belongings">
+                                <span class="lbl">소지품</span>
+                                <span class="val" id="val-belongings">-</span>
+                            </div>
+                            <div class="detail-item" id="field-secret">
+                                <span class="lbl">비밀 및 과거</span>
+                                <span class="val" id="val-secret">-</span>
+                            </div>
+                            <div class="detail-item" id="field-family">
+                                <span class="lbl">가족 관계</span>
+                                <span class="val" id="val-family">-</span>
+                            </div>
+                        </div>
+
+                        <!-- 기타 특이사항 -->
+                        <div class="text-block etc-block" id="field-etc">
+                            <span class="lbl">특이사항</span>
+                            <span class="val multiline" id="val-etc">-</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="toast" id="toast">프로필이 클립보드에 복사되었습니다.</div>
+
+        <script src="data.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
